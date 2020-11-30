@@ -40,7 +40,6 @@ public class KeyInput extends KeyAdapter {
                         tempObject.setVelX(5);
                         tempObject.setVelY(0);
                 }
-
             }
         }
     }
