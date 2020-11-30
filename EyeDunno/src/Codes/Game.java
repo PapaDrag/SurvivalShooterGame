@@ -10,11 +10,11 @@ import java.util.HashMap;
 
 public class Game extends Canvas implements Runnable {
 
-    public int WIDTH = 640, HEIGHT = WIDTH/12*9;
+    public int WIDTH = 720, HEIGHT = WIDTH/12*9;
     private Thread thread;
     private boolean running;
     private Handler handler;
-
+    private int fps;
 
     public Game(){
         Window window = new Window(WIDTH, HEIGHT, "RETARD", this);
@@ -62,7 +62,8 @@ public class Game extends Canvas implements Runnable {
 
             if (System.currentTimeMillis() - timer > 1000){
                 timer += 1000;
-                //System.out.println("FPS: " + Integer.toString(frames));
+                System.out.println("FPS: " + Integer.toString(frames));
+                fps = frames;
                 frames = 0;
             }
         }
@@ -86,6 +87,8 @@ public class Game extends Canvas implements Runnable {
         g.setColor(Color.RED);
         g.fillRect(0,0,WIDTH,HEIGHT);
 
+        g.setColor(Color.BLACK);
+        g.drawString("FPS: " + Integer.toString(fps), 10, 20);
 
         handler.render(g);
 
