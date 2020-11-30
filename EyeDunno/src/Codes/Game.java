@@ -7,8 +7,6 @@ import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.util.HashMap;
 
-// https://www.youtube.com/watch?v=0T1U0kbu1Sk 18:30
-
 
 public class Game extends Canvas implements Runnable {
 
