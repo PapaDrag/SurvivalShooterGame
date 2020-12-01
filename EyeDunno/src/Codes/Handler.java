@@ -2,6 +2,8 @@ package Codes;
 
 
 import GameObjects.GameObject;
+import GameObjects.ID;
+import GameObjects.SmallShot;
 
 import java.awt.*;
 import java.util.LinkedList;
@@ -11,12 +13,18 @@ import java.util.LinkedList;
  */
 public class Handler {
 
-    LinkedList<GameObject> objects = new LinkedList<GameObject>();
+    public LinkedList<GameObject> objects = new LinkedList<GameObject>();
 
     public void tick() {
         for (int i = 0; i < objects.size(); i++) {
             GameObject tempObject = objects.get(i);
             tempObject.tick();
+            //Check to remove lasers
+            if (tempObject.getID() == ID.SMALLSHOT){
+                if (tempObject.getX() < 0 || tempObject.getX() > Game.WIDTH || tempObject.getY() < 0 || tempObject.getY() > Game.HEIGHT) {
+                    objects.remove(tempObject);
+                }
+            }
         }
     }
 

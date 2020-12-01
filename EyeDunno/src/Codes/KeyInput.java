@@ -2,11 +2,10 @@ package Codes;
 
 import GameObjects.GameObject;
 import GameObjects.ID;
+import GameObjects.Player;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.HashMap;
-import java.util.TreeMap;
 
 
 public class KeyInput extends KeyAdapter {
@@ -36,7 +35,7 @@ public class KeyInput extends KeyAdapter {
                         if (S)
                             tempObject.setVelY(0);
                         else
-                            tempObject.setVelY(-2);
+                            tempObject.setVelY(Player.PLAYER_VELOCITY * -1);
                         break;
 
                     case 65://A
@@ -44,7 +43,7 @@ public class KeyInput extends KeyAdapter {
                         if (D)
                             tempObject.setVelX(0);
                         else
-                            tempObject.setVelX(-2);
+                            tempObject.setVelX(Player.PLAYER_VELOCITY * -1);
                         break;
 
                     case 83://S
@@ -52,7 +51,7 @@ public class KeyInput extends KeyAdapter {
                         if (W)
                             tempObject.setVelY(0);
                         else
-                            tempObject.setVelY(2);
+                            tempObject.setVelY(Player.PLAYER_VELOCITY);
                         break;
 
                     case 68://D
@@ -60,7 +59,7 @@ public class KeyInput extends KeyAdapter {
                         if (A)
                             tempObject.setVelX(0);
                         else
-                            tempObject.setVelX(2);
+                            tempObject.setVelX(Player.PLAYER_VELOCITY);
                         break;
                 }
             }
@@ -79,7 +78,7 @@ public class KeyInput extends KeyAdapter {
                     case 87://W
                         W = false;
                         if (S)
-                            tempObject.setVelY(2);
+                            tempObject.setVelY(Player.PLAYER_VELOCITY);
                         else
                             tempObject.setVelY(0);
                         break;
@@ -87,7 +86,7 @@ public class KeyInput extends KeyAdapter {
                     case 65://A
                         A = false;
                         if (D)
-                            tempObject.setVelX(2);
+                            tempObject.setVelX(Player.PLAYER_VELOCITY);
                         else
                             tempObject.setVelX(0);
                         break;
@@ -95,7 +94,7 @@ public class KeyInput extends KeyAdapter {
                     case 83://S
                         S = false;
                         if (W)
-                            tempObject.setVelY(-2);
+                            tempObject.setVelY(Player.PLAYER_VELOCITY * -1);
                         else
                             tempObject.setVelY(0);
                         break;
@@ -103,7 +102,7 @@ public class KeyInput extends KeyAdapter {
                     case 68://D
                         D = false;
                         if (A)
-                            tempObject.setVelX(-2);
+                            tempObject.setVelX(Player.PLAYER_VELOCITY * -1);
                         else
                             tempObject.setVelX(0);
                         break;

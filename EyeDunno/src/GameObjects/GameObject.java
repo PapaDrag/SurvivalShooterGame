@@ -1,19 +1,22 @@
 package GameObjects;
 
 import Codes.Game;
+import Codes.Handler;
 
 import java.awt.*;
 
 public abstract class GameObject {
 
-    protected int x,y;
+    protected double x,y;
     protected ID id;
-    protected int velX, velY;
+    protected double velX, velY;
+    protected Handler handler;
 
-    public GameObject(int x, int y, ID id){
+    public GameObject(int x, int y, ID id, Handler handler){
         this.x = x;
         this.y = y;
         this.id = id;
+        this.handler = handler;
         velX = 0;
         velY = 0;
     }
@@ -22,19 +25,23 @@ public abstract class GameObject {
 
     public abstract void render(Graphics g);
 
-    public void setX(int x){
+    public abstract Rectangle getBounds();
+
+    public abstract void Collision();
+
+    public void setX(double x){
         this.x = x;
     }
 
-    public void setY(int y){
+    public void setY(double y){
         this.y = y;
     }
 
-    public int getX(){
+    public double getX(){
         return x;
     }
 
-    public int getY(){
+    public double getY(){
         return y;
     }
 
@@ -46,19 +53,20 @@ public abstract class GameObject {
         return id;
     }
 
-    public void setVelX(int vel){
+    public void setVelX(double vel){
         this.velX = vel;
     }
 
-    public void setVelY(int vel) {
+    public void setVelY(double vel) {
         this.velY = vel;
     }
 
-    public int getVelX(){
+    public double getVelX(){
         return velX;
     }
 
-    public int getVelY() {
+    public double getVelY() {
         return velY;
     }
+
 }

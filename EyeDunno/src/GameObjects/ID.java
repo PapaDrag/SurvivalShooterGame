@@ -1,7 +1,7 @@
 package GameObjects;
 
 public enum ID {
-
     PLAYER,
-    ENEMY
+    ENEMY,
+    SMALLSHOT
 }

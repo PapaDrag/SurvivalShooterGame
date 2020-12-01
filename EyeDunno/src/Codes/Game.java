@@ -1,5 +1,6 @@
 package Codes;
 
+import GameObjects.Enemy;
 import GameObjects.ID;
 import GameObjects.Player;
 
@@ -10,17 +11,19 @@ import java.util.HashMap;
 
 public class Game extends Canvas implements Runnable {
 
-    public int WIDTH = 720, HEIGHT = WIDTH/12*9;
+    public static final int WIDTH = 1080, HEIGHT = WIDTH/12*9;
     private Thread thread;
     private boolean running;
-    private Handler handler;
+    public Handler handler;
     private int fps;
 
     public Game(){
         Window window = new Window(WIDTH, HEIGHT, "RETARD", this);
         handler = new Handler();
-        handler.addObject(new Player(100,100, ID.PLAYER));
+        handler.addObject(new Enemy(400,400,ID.ENEMY, handler, 20));
+        handler.addObject(new Player(100,100, ID.PLAYER, handler));
         this.addKeyListener(new KeyInput(this.handler));
+        this.addMouseListener(new MouseInput(this.handler));
     }
 
     public synchronized void start(){
@@ -62,7 +65,6 @@ public class Game extends Canvas implements Runnable {
 
             if (System.currentTimeMillis() - timer > 1000){
                 timer += 1000;
-                System.out.println("FPS: " + Integer.toString(frames));
                 fps = frames;
                 frames = 0;
             }
@@ -84,7 +86,7 @@ public class Game extends Canvas implements Runnable {
 
         Graphics g = bs.getDrawGraphics();
 
-        g.setColor(Color.RED);
+        g.setColor(Color.WHITE);
         g.fillRect(0,0,WIDTH,HEIGHT);
 
         g.setColor(Color.BLACK);
