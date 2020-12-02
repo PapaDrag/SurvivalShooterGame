@@ -18,20 +18,5 @@ public class Timer extends Thread{
         return currentTime/1000;
     }
 
-    public synchronized void wait(int seconds){
-        this.seconds = seconds;
-        start();
-
-    }
-
-    public void run(){
-        try {
-            sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-
-    }
 
 }

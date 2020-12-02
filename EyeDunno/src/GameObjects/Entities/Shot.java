@@ -1,6 +1,8 @@
-package GameObjects;
+package GameObjects.Entities;
 
 import Codes.Handler;
+import GameObjects.Entities.GameObject;
+import GameObjects.Entities.ID;
 
 public abstract class Shot extends GameObject {
 

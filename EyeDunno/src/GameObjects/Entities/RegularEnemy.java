@@ -1,6 +1,9 @@
-package GameObjects;
+package GameObjects.Entities;
 
 import Codes.Handler;
+import GameObjects.Entities.Enemy;
+import GameObjects.Entities.ID;
+import GameObjects.Entities.Player;
 
 import java.awt.*;
 
@@ -11,7 +14,7 @@ public class RegularEnemy extends Enemy {
     private static final int speed = 2;
 
 
-    public RegularEnemy(int x, int y, ID id, Handler handler, int size) {
+    public RegularEnemy(int x, int y, ID id, Handler handler) {
         super(x, y, id, handler);
         this.health = maxHealth;
     }

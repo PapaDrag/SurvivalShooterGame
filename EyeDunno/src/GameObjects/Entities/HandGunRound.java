@@ -1,18 +1,16 @@
-package GameObjects;
+package GameObjects.Entities;
 
-import Codes.Game;
 import Codes.Handler;
 
 import java.awt.*;
-import java.util.Collection;
 
-public class SmallShot extends Shot {
+public class HandGunRound extends Shot {
 
     public static final int SMALLSHOT_VELOCITY = 10;
     public static final int SMALLSHOT_SIZE = 8;
-    public static final int DAMAGE = 34;
+    public static final int DAMAGE = 20;
 
-    public SmallShot(int x, int y, ID id, Handler handler) {
+    public HandGunRound(int x, int y, ID id, Handler handler) {
         super(x, y, id, handler);
 
     }

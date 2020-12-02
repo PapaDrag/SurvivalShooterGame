@@ -1,32 +1,31 @@
 package Codes;
 
-import GameObjects.Enemy;
-import GameObjects.ID;
-import GameObjects.Player;
-import GameObjects.RegularEnemy;
+import GameObjects.Entities.ID;
+import GameObjects.Entities.Player;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.util.HashMap;
 
 
 public class Game extends Canvas implements Runnable {
 
-    public static final int WIDTH = 1080, HEIGHT = WIDTH/12*9;
+    public static final int WIDTH = 1200, HEIGHT = WIDTH/12*9;
     private Thread thread;
     private boolean running;
     public Handler handler;
     private int fps;
     private HUD hud;
 
+
     public Game(){
         Window window = new Window(WIDTH, HEIGHT, "RETARD", this);
         handler = new Handler(new Timer());
-        handler.addObject(new Player(100,100, ID.PLAYER, handler));
-        handler.addObject(new RegularEnemy(400,400,ID.ENEMY, handler, 20));
+        handler.addObject(new Player(600,800,ID.PLAYER,handler));
         hud = new HUD(handler);
         this.addKeyListener(new KeyInput(this.handler));
         this.addMouseListener(new MouseInput(this.handler));
+        this.addMouseMotionListener(new MouseInput(this.handler));
+        handler.startGame();
     }
 
     public synchronized void start(){

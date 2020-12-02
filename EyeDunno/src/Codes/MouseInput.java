@@ -1,11 +1,9 @@
 package Codes;
 
-import GameObjects.*;
+import GameObjects.Entities.Player;
 
-import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.lang.Math;
 
 
 public class MouseInput extends MouseAdapter {
@@ -16,34 +14,36 @@ public class MouseInput extends MouseAdapter {
         this.handler = handler;
     }
 
+    @Override
     public void mousePressed(MouseEvent e){
 
-        Player player = (Player)handler.objects.get(0);
-
+        Player player = (Player)handler.objects.getFirst();
         double mouseX = e.getX();
         double mouseY = e.getY();
-        player.attemptShoot(mouseX,mouseY);
+        player.pullTrigger(mouseX,mouseY);
 
+    }
 
-        /**
-         double playerX = player.getX();
-        double playerY = player.getY();
+    @Override
+    public void mouseReleased(MouseEvent e){
+        Player player = (Player)handler.objects.getFirst();
+        player.releaseTrigger();
+    }
 
+    @Override
+    public void mouseDragged(MouseEvent e){
         double mouseX = e.getX();
         double mouseY = e.getY();
+        handler.mouseX = (int)mouseX;
+        handler.mouseY = (int)mouseY;
+    }
 
-        double theta = Math.atan2((mouseY-playerY),(mouseX - playerX));
-
-        double velX = (SmallShot.SMALLSHOT_VELOCITY) * Math.cos(theta);
-        double velY = (SmallShot.SMALLSHOT_VELOCITY) * Math.sin(theta);
-
-        Shot shot = new SmallShot((int)playerX + (Player.PLAYER_SIZE/3),(int)playerY + (Player.PLAYER_SIZE/3), ID.SMALLSHOT, handler);
-
-        shot.setVelX(velX);
-        shot.setVelY(velY);
-
-        handler.objects.add(shot);
-**/
+    @Override
+    public void mouseMoved(MouseEvent e){
+        double mouseX = e.getX();
+        double mouseY = e.getY();
+        handler.mouseX = (int)mouseX;
+        handler.mouseY = (int)mouseY;
     }
 
 }

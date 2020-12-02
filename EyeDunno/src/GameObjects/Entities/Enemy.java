@@ -1,8 +1,6 @@
-package GameObjects;
+package GameObjects.Entities;
 
 import Codes.Handler;
-
-import java.awt.*;
 
 public abstract class Enemy extends GameObject {
 

@@ -1,8 +1,8 @@
 package Codes;
 
-import GameObjects.GameObject;
-import GameObjects.ID;
-import GameObjects.Player;
+import GameObjects.Entities.GameObject;
+import GameObjects.Entities.ID;
+import GameObjects.Entities.Player;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -61,6 +61,10 @@ public class KeyInput extends KeyAdapter {
                         else
                             tempObject.setVelX(Player.PLAYER_VELOCITY);
                         break;
+
+                    case KeyEvent.VK_R: //R
+                        Player player = (Player)tempObject;
+                        player.reload();
                 }
             }
         }
@@ -106,6 +110,7 @@ public class KeyInput extends KeyAdapter {
                         else
                             tempObject.setVelX(0);
                         break;
+
                 }
             }
         }
