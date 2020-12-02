@@ -3,6 +3,7 @@ package Codes;
 import GameObjects.Enemy;
 import GameObjects.ID;
 import GameObjects.Player;
+import GameObjects.RegularEnemy;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -16,12 +17,14 @@ public class Game extends Canvas implements Runnable {
     private boolean running;
     public Handler handler;
     private int fps;
+    private HUD hud;
 
     public Game(){
         Window window = new Window(WIDTH, HEIGHT, "RETARD", this);
-        handler = new Handler();
-        handler.addObject(new Enemy(400,400,ID.ENEMY, handler, 20));
+        handler = new Handler(new Timer());
         handler.addObject(new Player(100,100, ID.PLAYER, handler));
+        handler.addObject(new RegularEnemy(400,400,ID.ENEMY, handler, 20));
+        hud = new HUD(handler);
         this.addKeyListener(new KeyInput(this.handler));
         this.addMouseListener(new MouseInput(this.handler));
     }
@@ -74,6 +77,8 @@ public class Game extends Canvas implements Runnable {
 
     private void tick(){
         handler.tick();
+        hud.tick();
+
     }
 
 
@@ -93,6 +98,7 @@ public class Game extends Canvas implements Runnable {
         g.drawString("FPS: " + Integer.toString(fps), 10, 20);
 
         handler.render(g);
+        hud.render(g);
 
         g.dispose();
         bs.show();

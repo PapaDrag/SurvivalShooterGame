@@ -14,8 +14,14 @@ import java.util.LinkedList;
 public class Handler {
 
     public LinkedList<GameObject> objects = new LinkedList<GameObject>();
+    public Timer timer;
+
+    public Handler(Timer timer){
+        this.timer = timer;
+    }
 
     public void tick() {
+        timer.tick();
         for (int i = 0; i < objects.size(); i++) {
             GameObject tempObject = objects.get(i);
             tempObject.tick();
@@ -39,6 +45,8 @@ public class Handler {
     public void addObject(GameObject object){
         this.objects.add(object);
     }
+
+
 
     public void removeObject(GameObject object){
         this.objects.remove(object);

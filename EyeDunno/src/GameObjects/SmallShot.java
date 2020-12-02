@@ -6,10 +6,11 @@ import Codes.Handler;
 import java.awt.*;
 import java.util.Collection;
 
-public class SmallShot extends GameObject {
+public class SmallShot extends Shot {
 
     public static final int SMALLSHOT_VELOCITY = 10;
     public static final int SMALLSHOT_SIZE = 8;
+    public static final int DAMAGE = 34;
 
     public SmallShot(int x, int y, ID id, Handler handler) {
         super(x, y, id, handler);
@@ -40,6 +41,8 @@ public class SmallShot extends GameObject {
             if (object.getID() == ID.ENEMY){
                 if (getBounds().intersects(object.getBounds())){
                     handler.objects.remove(this);
+                    RegularEnemy enemy = (RegularEnemy)object;
+                    enemy.takeDamage(DAMAGE);
                     break;
                 }
             }
