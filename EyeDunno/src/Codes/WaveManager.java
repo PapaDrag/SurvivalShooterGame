@@ -23,11 +23,29 @@ public class WaveManager implements Runnable {
         handler.addObject(new RegularEnemy(600,50, ID.ENEMY,handler));
         wait(2);
         handler.addObject(new RegularEnemy(600,50, ID.ENEMY,handler));
+        wait(1);
+        handler.addObject(new RegularEnemy(600,50, ID.ENEMY,handler));
         waitForWaveCompletion();
     }
 
     public void startWave2(){
+        wait(2);
         handler.addObject(new RegularEnemy(600,50, ID.ENEMY,handler));
+        wait(1);
+        handler.addObject(new RegularEnemy(600,50, ID.ENEMY,handler));
+        wait(2);
+        handler.addObject(new RegularEnemy(600,50, ID.ENEMY,handler));
+        wait(1);
+        handler.addObject(new RegularEnemy(600,50, ID.ENEMY,handler));
+        wait(2);
+        handler.addObject(new RegularEnemy(600,50, ID.ENEMY,handler));
+        wait(1);
+        handler.addObject(new RegularEnemy(600,50, ID.ENEMY,handler));
+        wait(2);
+        handler.addObject(new RegularEnemy(600,50, ID.ENEMY,handler));
+        wait(1);
+        handler.addObject(new RegularEnemy(600,50, ID.ENEMY,handler));
+
     }
 
     @Override

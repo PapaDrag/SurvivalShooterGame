@@ -4,6 +4,7 @@ import GameObjects.Entities.Player;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 
 
 public class MouseInput extends MouseAdapter {
@@ -44,6 +45,15 @@ public class MouseInput extends MouseAdapter {
         double mouseY = e.getY();
         handler.mouseX = (int)mouseX;
         handler.mouseY = (int)mouseY;
+    }
+
+
+    @Override
+    public void mouseWheelMoved(MouseWheelEvent e){ //forwards -1 Backwards 1
+        Player player = (Player)handler.objects.getFirst();
+        player.nextGun(e.getWheelRotation());
+
+
     }
 
 }

@@ -18,9 +18,9 @@ public class SubMachineGun extends Gun implements Runnable {
         ammoInMag = magazineSize;
         ammoInReserve = magazineSize * 4;
         reloadTime = 3;
-        accuracy = 42;
+        accuracy = 60;
         isTriggerDown = false;
-        rateOfFire = 66;
+        rateOfFire = 50;
 
     }
 

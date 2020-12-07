@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class HandGunRound extends Shot {
 
-    public static final int SMALLSHOT_VELOCITY = 10;
+    public static final int SMALLSHOT_VELOCITY = 20;
     public static final int SMALLSHOT_SIZE = 8;
     public static final int DAMAGE = 20;
 
@@ -35,15 +35,19 @@ public class HandGunRound extends Shot {
     }
 
     public void Collision(){
-        for (GameObject object : handler.objects){
-            if (object.getID() == ID.ENEMY){
-                if (getBounds().intersects(object.getBounds())){
-                    handler.objects.remove(this);
-                    RegularEnemy enemy = (RegularEnemy)object;
-                    enemy.takeDamage(DAMAGE);
-                    break;
+        try {
+            for (GameObject object : handler.objects) {
+                if (object.getID() == ID.ENEMY) {
+                    if (getBounds().intersects(object.getBounds())) {
+                        handler.objects.remove(this);
+                        RegularEnemy enemy = (RegularEnemy) object;
+                        enemy.takeDamage(DAMAGE);
+                        break;
+                    }
                 }
             }
+        }catch (Exception e){
+            System.out.println("Collision Exception Detected");
         }
     }
 }

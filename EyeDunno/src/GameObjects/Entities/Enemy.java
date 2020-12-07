@@ -11,11 +11,6 @@ public abstract class Enemy extends GameObject {
 
     }
 
-    @Override
-    public void tick() {
-        x += velX;
-        y += velY;
-    }
 
 
     @Override

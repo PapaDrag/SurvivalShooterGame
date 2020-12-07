@@ -27,7 +27,6 @@ public class ReloadThread extends Thread {
         }
         if (gun.ammoInReserve >= gun.magazineSize){
             int initAmmoMissingInMag = gun.magazineSize - gun.ammoInMag;
-            System.out.println(initAmmoMissingInMag);
             gun.ammoInMag = gun.magazineSize;
             gun.ammoInReserve -= initAmmoMissingInMag;
 

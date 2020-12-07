@@ -32,10 +32,8 @@ public class RegularEnemy extends Enemy {
         Player player = (Player)handler.objects.get(0);
         double playerX = player.getX();
         double playerY = player.getY();
-
         double enemyX = getX();
         double enemyY = getY();
-
         double theta = Math.atan2((enemyY-playerY),(enemyX - playerX));
 
         velX = -(speed) * Math.cos(theta);

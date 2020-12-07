@@ -1,5 +1,6 @@
 package Codes;
 
+import GameObjects.GunUtil.Gun;
 import GameObjects.GunUtil.GunType;
 import GameObjects.Entities.Player;
 
@@ -11,7 +12,6 @@ public class HUD {
     public Handler handler;
     private int ammoInMag;
     private int ammoInReserve;
-    private GunType gunType;
     private Player player;
     private int currentWave;
     private boolean isReloading;
@@ -32,6 +32,8 @@ public class HUD {
         drawAmmo(g);
         drawWave(g);
         drawReloading(g);
+        if (player.getCurrentGun() != null)
+            drawCurrentGun(g);
 
     }
 
@@ -68,6 +70,14 @@ public class HUD {
             g.setFont(new Font("font", Font.BOLD | Font.ITALIC, 15));
             g.drawString("RELOADING", (int)player.getX() - 36, (int)player.getY() + 34);
         }
+    }
+
+    public void drawCurrentGun(Graphics g){
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("font", Font.BOLD,25));
+        String gunStr = player.getCurrentGun().toString();
+        g.drawString(gunStr,1,120);
+
     }
 
 

@@ -7,6 +7,7 @@ import GameObjects.GunUtil.Pistol;
 import GameObjects.GunUtil.SubMachineGun;
 
 import java.awt.*;
+import java.util.LinkedList;
 
 public class Player extends GameObject {
 
@@ -14,12 +15,14 @@ public class Player extends GameObject {
     public static final int PLAYER_VELOCITY = 3;
     public static final int PLAYER_SIZE = 20;
     private Gun currentGun;
+    private LinkedList<Gun> guns = new LinkedList<Gun>();
 
     public Player(int x, int y, ID id, Handler handler) {
         super(x, y, id, handler);
         health = 100;
-        currentGun = new SubMachineGun(handler, this);
-
+        guns.add(new SubMachineGun(handler,this));
+        guns.add(new Pistol(handler,this));
+        currentGun = guns.getFirst();
     }
 
     /**
@@ -81,8 +84,21 @@ public class Player extends GameObject {
         currentGun.reload();
     }
 
-    public void changeGun(Gun gun){
-        currentGun = gun;
+    public void nextGun(int delta){
+        if (currentGun.isReloading)
+            return;
+
+        int index = guns.indexOf(currentGun) + delta;
+        if (index > guns.size()-1) {
+            currentGun = guns.get(0);
+            return;
+        }
+        if (index < 0){
+            currentGun = guns.get(guns.size()-1);
+            return;
+        }
+
+        currentGun = guns.get(index);
     }
 
     public void releaseTrigger(){

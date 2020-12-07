@@ -52,6 +52,17 @@ public abstract class Gun {
         return ammoInReserve;
     }
 
+    @Override
+    public String toString(){
+        switch (gunType){
+            case PISTOL:
+                return "Pistol";
+            case SUBMACHINEGUN:
+                return "Submachinegun";
+        }
+        return null;
+    }
+
 
 
 }

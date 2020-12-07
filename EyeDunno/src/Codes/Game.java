@@ -4,6 +4,7 @@ import GameObjects.Entities.ID;
 import GameObjects.Entities.Player;
 
 import java.awt.*;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferStrategy;
 
 
@@ -18,14 +19,8 @@ public class Game extends Canvas implements Runnable {
 
 
     public Game(){
-        Window window = new Window(WIDTH, HEIGHT, "RETARD", this);
-        handler = new Handler(new Timer());
-        handler.addObject(new Player(600,800,ID.PLAYER,handler));
-        hud = new HUD(handler);
-        this.addKeyListener(new KeyInput(this.handler));
-        this.addMouseListener(new MouseInput(this.handler));
-        this.addMouseMotionListener(new MouseInput(this.handler));
-        handler.startGame();
+        initializeGame();
+        start();
     }
 
     public synchronized void start(){
@@ -101,6 +96,18 @@ public class Game extends Canvas implements Runnable {
 
         g.dispose();
         bs.show();
+    }
+
+    public void initializeGame(){
+        Window window = new Window(WIDTH, HEIGHT, "RETARD", this);
+        handler = new Handler(new Timer());
+        handler.addObject(new Player(600,800,ID.PLAYER,handler));
+        hud = new HUD(handler);
+        this.addKeyListener(new KeyInput(this.handler));
+        this.addMouseListener(new MouseInput(this.handler));
+        this.addMouseMotionListener(new MouseInput(this.handler));
+        this.addMouseWheelListener(new MouseInput(this.handler));
+        handler.startGame();
     }
 
     public static void main(String[] args){
