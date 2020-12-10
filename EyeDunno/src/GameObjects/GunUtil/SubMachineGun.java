@@ -58,8 +58,8 @@ public class SubMachineGun extends Gun implements Runnable {
             double playerX = player.getX();
             double playerY = player.getY();
             double theta = Math.atan2((mouseY - playerY), (mouseX - playerX));
-            double velX = (HandGunRound.SMALLSHOT_VELOCITY) * Math.cos(theta);
-            double velY = (HandGunRound.SMALLSHOT_VELOCITY) * Math.sin(theta);
+            double velX = (HandGunRound.velocity) * Math.cos(theta);
+            double velY = (HandGunRound.velocity) * Math.sin(theta);
             Shot shot = new HandGunRound((int) playerX + (Player.PLAYER_SIZE / 3), (int) playerY + (Player.PLAYER_SIZE / 3), ID.SMALLSHOT, handler);
             shot.setVelX(velX);
             shot.setVelY(velY);

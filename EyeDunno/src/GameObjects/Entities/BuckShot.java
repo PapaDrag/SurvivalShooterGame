@@ -4,16 +4,13 @@ import Codes.Handler;
 
 import java.awt.*;
 
-public class HandGunRound extends Shot {
+public class BuckShot extends Shot {
 
-
-
-    public HandGunRound(int x, int y, ID id, Handler handler) {
+    public BuckShot(int x, int y, ID id, Handler handler) {
         super(x, y, id, handler);
-        velocity = 20;
-        size = 10;
-        damage = 20;
-
+        velocity = 15;
+        size = 7;
+        damage = 8;
     }
 
     @Override
@@ -26,8 +23,9 @@ public class HandGunRound extends Shot {
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.BLUE);
+        g.setColor(Color.BLUE.darker());
         g.fillRect((int)x,(int)y, size, size);
+
     }
 
     @Override
@@ -35,7 +33,8 @@ public class HandGunRound extends Shot {
         return new Rectangle((int)x,(int)y, size, size);
     }
 
-    public void Collision(){
+    @Override
+    public void Collision() {
         try {
             for (GameObject object : handler.objects) {
                 if (object.getID() == ID.ENEMY) {
@@ -58,3 +57,4 @@ public class HandGunRound extends Shot {
         }
     }
 }
+

@@ -59,6 +59,8 @@ public abstract class Gun {
                 return "Pistol";
             case SUBMACHINEGUN:
                 return "Submachinegun";
+            case SHOTGUN:
+                return "Shotgun";
         }
         return null;
     }

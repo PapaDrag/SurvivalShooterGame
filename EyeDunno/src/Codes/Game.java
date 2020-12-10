@@ -1,5 +1,6 @@
 package Codes;
 
+import GameObjects.Entities.Block;
 import GameObjects.Entities.ID;
 import GameObjects.Entities.Player;
 
@@ -10,7 +11,7 @@ import java.awt.image.BufferStrategy;
 
 public class Game extends Canvas implements Runnable {
 
-    public static final int WIDTH = 1200, HEIGHT = WIDTH/12*9;
+    public static final int WIDTH = 1500, HEIGHT = WIDTH/16*9;
     private Thread thread;
     private boolean running;
     public Handler handler;
@@ -107,6 +108,7 @@ public class Game extends Canvas implements Runnable {
         this.addMouseListener(new MouseInput(this.handler));
         this.addMouseMotionListener(new MouseInput(this.handler));
         this.addMouseWheelListener(new MouseInput(this.handler));
+        handler.addObject(new Block(500,500,ID.BLOCK,handler,100,100,Color.BLUE));
         handler.startGame();
     }
 

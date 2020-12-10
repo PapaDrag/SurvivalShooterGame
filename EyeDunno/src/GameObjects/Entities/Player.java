@@ -4,6 +4,7 @@ import Codes.Game;
 import Codes.Handler;
 import GameObjects.GunUtil.Gun;
 import GameObjects.GunUtil.Pistol;
+import GameObjects.GunUtil.Shotgun;
 import GameObjects.GunUtil.SubMachineGun;
 
 import java.awt.*;
@@ -12,16 +13,19 @@ import java.util.LinkedList;
 public class Player extends GameObject {
 
     private int health;
-    public static final int PLAYER_VELOCITY = 3;
+    public static final int PLAYER_VELOCITY = 6;
     public static final int PLAYER_SIZE = 20;
     private Gun currentGun;
     private LinkedList<Gun> guns = new LinkedList<Gun>();
+    private int oldX;
+    private int oldY;
 
     public Player(int x, int y, ID id, Handler handler) {
         super(x, y, id, handler);
         health = 100;
         guns.add(new SubMachineGun(handler,this));
         guns.add(new Pistol(handler,this));
+        guns.add(new Shotgun(handler,this));
         currentGun = guns.getFirst();
     }
 
@@ -30,6 +34,8 @@ public class Player extends GameObject {
      */
     @Override
     public void tick() {
+        oldX = (int)x;
+        oldY = (int)y;
         x += velX;
         y += velY;
         Collision();
@@ -57,10 +63,18 @@ public class Player extends GameObject {
             x = 0;
         if (y < 0)
             y = 0;
-        if (x > Game.WIDTH - PLAYER_SIZE)
-            x = Game.WIDTH - (PLAYER_SIZE);
-        if (y > Game.HEIGHT - (2.5*PLAYER_SIZE))
-            y = Game.HEIGHT - (2.5*PLAYER_SIZE);
+        if (x > Game.WIDTH - (1.5*PLAYER_SIZE))
+            x = Game.WIDTH - (1.5*PLAYER_SIZE);
+        if (y > Game.HEIGHT - (3*PLAYER_SIZE))
+            y = Game.HEIGHT - (3*PLAYER_SIZE);
+        for (GameObject object : handler.objects){
+            if (object.getID() == ID.BLOCK){
+                if (getBounds().intersects(object.getBounds())){
+                    x = oldX;
+                    y = oldY;
+                }
+            }
+        }
     }
 
     public Gun getCurrentGun(){
