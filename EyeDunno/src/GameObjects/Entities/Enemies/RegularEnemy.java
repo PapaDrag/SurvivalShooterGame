@@ -1,7 +1,7 @@
-package GameObjects.Entities;
+package GameObjects.Entities.Enemies;
 
 import Codes.Handler;
-import GameObjects.Entities.Enemy;
+import GameObjects.Entities.Enemies.Enemy;
 import GameObjects.Entities.ID;
 import GameObjects.Entities.Player;
 
@@ -19,28 +19,17 @@ public class RegularEnemy extends Enemy {
     }
 
     @Override
+    public void givePlayerScore() {
+        Player player = (Player)handler.objects.getFirst();
+        player.addScore(10);
+    }
+
+    @Override
     public void render(Graphics g){
         g.setColor(Color.BLACK);
         g.fillRect((int)x,(int)y,size,size);
         g.setColor(Color.RED);
         g.fillRect((int)(x-10),(int)(y-10),(int)((size+20)*((double)health/(double)maxHealth)),7);
-    }
-
-    @Override
-    public void tick(){
-        Player player = (Player)handler.objects.getFirst();
-        double playerX = player.getX();
-        double playerY = player.getY();
-        double enemyX = getX();
-        double enemyY = getY();
-        double theta = Math.atan2((enemyY-playerY),(enemyX - playerX));
-        velX = -(speed) * Math.cos(theta);
-        velY = -(speed) * Math.sin(theta);
-        oldX = (int)x;
-        oldY = (int)y;
-        x += velX;
-        y += velY;
-        //Collision(); work in progress
     }
 
 

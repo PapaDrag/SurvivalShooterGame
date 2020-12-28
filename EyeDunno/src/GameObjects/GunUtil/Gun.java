@@ -6,6 +6,8 @@ import java.util.Random;
 
 public abstract class Gun {
 
+    public static final int reserveMultiplier = 6;
+
     protected Random random;
     protected int ammoInMag;
     protected int ammoInReserve;
@@ -63,6 +65,18 @@ public abstract class Gun {
                 return "Shotgun";
         }
         return null;
+    }
+
+    public void maxAmmo(){
+        ammoInReserve += magazineSize * reserveMultiplier;
+    }
+
+    public int getMagazineSize(){
+        return magazineSize;
+    }
+
+    public void addOneRound(){
+        ammoInMag++;
     }
 
 

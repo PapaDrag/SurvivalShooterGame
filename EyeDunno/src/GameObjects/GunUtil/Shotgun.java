@@ -2,6 +2,9 @@ package GameObjects.GunUtil;
 
 import Codes.Handler;
 import GameObjects.Entities.*;
+import GameObjects.Entities.Shots.BuckShot;
+import GameObjects.Entities.Shots.HandGunRound;
+import GameObjects.Entities.Shots.Shot;
 
 public class Shotgun extends Gun {
 
@@ -9,12 +12,12 @@ public class Shotgun extends Gun {
 
     public Shotgun(Handler handler, Player player) {
         super(handler, player);
-        magazineSize = 8;
+        magazineSize = 5;
         gunType = GunType.SHOTGUN;
         ammoInMag = magazineSize;
-        ammoInReserve = magazineSize * 4;
-        reloadTime = 3;
-        accuracy = 40;
+        ammoInReserve = magazineSize * reserveMultiplier;
+        reloadTime = 4;
+        accuracy = 20;
         pellets = 12;
     }
 

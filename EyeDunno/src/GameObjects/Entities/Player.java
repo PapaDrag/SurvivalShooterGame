@@ -19,14 +19,16 @@ public class Player extends GameObject {
     private LinkedList<Gun> guns = new LinkedList<Gun>();
     private int oldX;
     private int oldY;
+    private int score;
+    private int maxHealth;
 
     public Player(int x, int y, ID id, Handler handler) {
         super(x, y, id, handler);
         health = 100;
-        guns.add(new SubMachineGun(handler,this));
         guns.add(new Pistol(handler,this));
-        guns.add(new Shotgun(handler,this));
         currentGun = guns.getFirst();
+        score = 0;
+        maxHealth = 100;
     }
 
     /**
@@ -67,13 +69,17 @@ public class Player extends GameObject {
             x = Game.WIDTH - (1.5*PLAYER_SIZE);
         if (y > Game.HEIGHT - (3*PLAYER_SIZE))
             y = Game.HEIGHT - (3*PLAYER_SIZE);
-        for (GameObject object : handler.objects){
-            if (object.getID() == ID.BLOCK){
-                if (getBounds().intersects(object.getBounds())){
-                    x = oldX;
-                    y = oldY;
+        try {
+            for (GameObject object : handler.objects) {
+                if (object.getID() == ID.BLOCK) {
+                    if (getBounds().intersects(object.getBounds())) {
+                        x = oldX;
+                        y = oldY;
+                    }
                 }
             }
+        }catch (Exception e){
+            System.out.println("Concurrent Modification Detected");
         }
     }
 
@@ -84,6 +90,10 @@ public class Player extends GameObject {
 
     public void takeDamage(int damage){
         health -= damage;
+        if (health <= 0) {
+            handler.resetGame();
+
+        }
     }
 
     public int getHealth(){
@@ -118,5 +128,40 @@ public class Player extends GameObject {
     public void releaseTrigger(){
         currentGun.releaseTrigger();
     }
+
+    public void addGun(Gun gun){
+        for (Gun theGun : guns){
+            if (theGun.getGunType() == gun.getGunType()){
+                theGun.maxAmmo();
+                return;
+            }
+        }
+        guns.add(gun);
+    }
+
+    public void maxAmmo() { //adds ammo to every gun
+        for (Gun thegun : guns) {
+            thegun.maxAmmo();
+        }
+    }
+
+    public void addScore(int score){
+        this.score += score;
+    }
+
+    public int getScore(){
+        return score;
+    }
+
+    public void addHealth(int health){
+        this.health += health;
+        if (this.health > 100)
+            this.health = maxHealth;
+    }
+
+    public double getPercentHealth(){
+        return (double)health/maxHealth;
+    }
+
 
 }

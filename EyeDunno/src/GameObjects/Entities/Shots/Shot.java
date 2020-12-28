@@ -1,4 +1,4 @@
-package GameObjects.Entities;
+package GameObjects.Entities.Shots;
 
 import Codes.Handler;
 import GameObjects.Entities.GameObject;

@@ -3,8 +3,8 @@ package GameObjects.GunUtil;
 import Codes.Handler;
 import GameObjects.Entities.ID;
 import GameObjects.Entities.Player;
-import GameObjects.Entities.Shot;
-import GameObjects.Entities.HandGunRound;
+import GameObjects.Entities.Shots.Shot;
+import GameObjects.Entities.Shots.HandGunRound;
 
 public class Pistol extends Gun {
 
@@ -14,7 +14,7 @@ public class Pistol extends Gun {
         magazineSize = 15;
         gunType = GunType.PISTOL;
         ammoInMag = magazineSize;
-        ammoInReserve = magazineSize * 4;
+        ammoInReserve = magazineSize * 10;
         reloadTime = 2;
         accuracy = 30;
     }

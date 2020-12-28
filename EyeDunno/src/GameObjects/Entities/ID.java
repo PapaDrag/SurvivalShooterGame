@@ -5,7 +5,8 @@ public enum ID {
     ENEMY,
     SMALLSHOT,
     BUCKSHOT,
-    BLOCK
+    BLOCK,
+    GUNPICKUP
 
 
 }

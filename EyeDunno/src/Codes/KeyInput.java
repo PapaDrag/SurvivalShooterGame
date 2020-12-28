@@ -12,8 +12,10 @@ public class KeyInput extends KeyAdapter {
 
     private Handler handler;
     private static Boolean W,A,S,D; //true if held down
+    private Game game;
 
-    public KeyInput(Handler handler){
+    public KeyInput(Handler handler, Game game){
+        this.game = game;
         this.handler = handler;
         W = false;
         A = false;
@@ -65,6 +67,12 @@ public class KeyInput extends KeyAdapter {
                     case KeyEvent.VK_R: //R
                         Player player = (Player)tempObject;
                         player.reload();
+                        break;
+
+                    case KeyEvent.VK_P: //P
+                        System.out.println("cunt");
+                        game.pause();
+                        break;
                 }
             }
         }

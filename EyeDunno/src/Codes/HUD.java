@@ -32,6 +32,7 @@ public class HUD {
         drawAmmo(g);
         drawWave(g);
         drawReloading(g);
+        drawScore(g);
         if (player.getCurrentGun() != null)
             drawCurrentGun(g);
 
@@ -46,15 +47,28 @@ public class HUD {
     }
 
     public void drawHealth(Graphics g){
+        g.setColor(Color.RED);
+        g.drawRect(0,35,196, 40);
+        g.fillRect(0,35, (int)(player.getPercentHealth()*196),40);
+
+
         g.setColor(Color.BLACK);
-        g.setFont(new Font("font", Font.BOLD,20));
-        g.drawString("HEALTH: " + Integer.toString(health),1,40);
+        g.setFont(new Font("font", Font.BOLD,30));
+        g.drawString("HEALTH: " + health,1,65);
     }
 
     public void drawAmmo(Graphics g){
         g.setColor(Color.BLACK);
-        g.setFont(new Font("font", Font.BOLD,35));
-        g.drawString(Integer.toString(ammoInMag) + "/" + Integer.toString(ammoInReserve),1,80);
+        if (ammoInReserve < player.getCurrentGun().getMagazineSize())
+            g.setColor(Color.RED);
+        g.setFont(new Font("font", Font.BOLD,60));
+        g.drawString( "/" + Integer.toString(ammoInReserve),Game.WIDTH - 132,Game.HEIGHT - 55);
+        for (int i = 1; i <= ammoInMag; i++){
+            g.setColor(Color.BLACK);
+            if (ammoInMag < player.getCurrentGun().getMagazineSize()/3)
+                g.setColor(Color.RED);
+            g.fillRect(Game.WIDTH - 135 + -(5*i),Game.HEIGHT-85,4,30);
+        }
     }
 
     public void drawWave(Graphics g){
@@ -76,8 +90,14 @@ public class HUD {
         g.setColor(Color.BLACK);
         g.setFont(new Font("font", Font.BOLD,25));
         String gunStr = player.getCurrentGun().toString();
-        g.drawString(gunStr,1,120);
+        g.drawString(gunStr,Game.WIDTH - 170,Game.HEIGHT - 110);
+    }
 
+    public void drawScore(Graphics g){
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("font", Font.BOLD,45));
+        String str = Integer.toString(player.getScore());
+        g.drawString("Score: " + str,Game.WIDTH - Game.WIDTH*3/5,50);
     }
 
 

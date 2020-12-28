@@ -3,6 +3,7 @@ package Codes;
 
 import GameObjects.Entities.GameObject;
 import GameObjects.Entities.ID;
+import GameObjects.Entities.Shots.Shot;
 
 import java.awt.*;
 import java.util.LinkedList;
@@ -16,10 +17,11 @@ public class Handler {
     public Timer timer;
     public WaveManager waveManager;
     public int mouseX,mouseY;
+    public Game game;
 
 
-    public Handler(Timer timer){
-
+    public Handler(Timer timer, Game game){
+        this.game = game;
         this.timer = timer;
         this.waveManager = new WaveManager(this);
     }
@@ -29,8 +31,8 @@ public class Handler {
         for (int i = 0; i < objects.size(); i++) {
             GameObject tempObject = objects.get(i);
             tempObject.tick();
-            //Check to remove shots
-            if (tempObject.getID() == ID.SMALLSHOT){
+            //Check to remove shots MOVE THIS TO THE SHOT CLASS TICK
+            if (tempObject instanceof Shot){
                 if (tempObject.getX() < 0 || tempObject.getX() > Game.WIDTH || tempObject.getY() < 0 || tempObject.getY() > Game.HEIGHT) {
                     objects.remove(tempObject);
                 }
@@ -57,6 +59,10 @@ public class Handler {
 
     public void removeObject(GameObject object){
         this.objects.remove(object);
+    }
+
+    public void resetGame(){
+        game.initializeGame();
     }
 }
 

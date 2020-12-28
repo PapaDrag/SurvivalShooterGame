@@ -1,6 +1,10 @@
-package GameObjects.Entities;
+package GameObjects.Entities.Shots;
 
 import Codes.Handler;
+import GameObjects.Entities.Enemies.Enemy;
+import GameObjects.Entities.GameObject;
+import GameObjects.Entities.ID;
+import GameObjects.Entities.Player;
 
 import java.awt.*;
 
@@ -18,6 +22,11 @@ public class HandGunRound extends Shot {
 
     @Override
     public void tick() {
+        if (velX == 0 && velY == 0) {
+            handler.objects.remove(this);
+            Player player = (Player)handler.objects.getFirst();
+            player.getCurrentGun().addOneRound();
+        }
         x += velX;
         y += velY;
         Collision();
@@ -41,7 +50,7 @@ public class HandGunRound extends Shot {
                 if (object.getID() == ID.ENEMY) {
                     if (getBounds().intersects(object.getBounds())) {
                         handler.objects.remove(this);
-                        RegularEnemy enemy = (RegularEnemy) object;
+                        Enemy enemy = (Enemy) object;
                         enemy.takeDamage(damage);
                         break;
                     }

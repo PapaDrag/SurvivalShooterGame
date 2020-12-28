@@ -1,6 +1,10 @@
-package GameObjects.Entities;
+package GameObjects.Entities.Shots;
 
 import Codes.Handler;
+import GameObjects.Entities.Enemies.Enemy;
+import GameObjects.Entities.Enemies.RegularEnemy;
+import GameObjects.Entities.GameObject;
+import GameObjects.Entities.ID;
 
 import java.awt.*;
 
@@ -10,7 +14,7 @@ public class BuckShot extends Shot {
         super(x, y, id, handler);
         velocity = 15;
         size = 7;
-        damage = 8;
+        damage = 6;
     }
 
     @Override
@@ -40,7 +44,7 @@ public class BuckShot extends Shot {
                 if (object.getID() == ID.ENEMY) {
                     if (getBounds().intersects(object.getBounds())) {
                         handler.objects.remove(this);
-                        RegularEnemy enemy = (RegularEnemy) object;
+                        Enemy enemy = (Enemy) object;
                         enemy.takeDamage(damage);
                         break;
                     }

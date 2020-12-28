@@ -1,10 +1,10 @@
 package GameObjects.GunUtil;
 
 import Codes.Handler;
-import GameObjects.Entities.HandGunRound;
+import GameObjects.Entities.Shots.HandGunRound;
 import GameObjects.Entities.ID;
 import GameObjects.Entities.Player;
-import GameObjects.Entities.Shot;
+import GameObjects.Entities.Shots.Shot;
 
 public class SubMachineGun extends Gun implements Runnable {
 
@@ -16,7 +16,7 @@ public class SubMachineGun extends Gun implements Runnable {
         magazineSize = 35;
         gunType = GunType.SUBMACHINEGUN;
         ammoInMag = magazineSize;
-        ammoInReserve = magazineSize * 4;
+        ammoInReserve = magazineSize * reserveMultiplier;
         reloadTime = 3;
         accuracy = 60;
         isTriggerDown = false;

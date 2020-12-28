@@ -20,6 +20,7 @@ public class Game extends Canvas implements Runnable {
 
 
     public Game(){
+        Window window = new Window(WIDTH, HEIGHT, "RETARD", this);
         initializeGame();
         start();
     }
@@ -71,6 +72,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     private void tick(){
+
         handler.tick();
         hud.tick();
 
@@ -100,16 +102,19 @@ public class Game extends Canvas implements Runnable {
     }
 
     public void initializeGame(){
-        Window window = new Window(WIDTH, HEIGHT, "RETARD", this);
-        handler = new Handler(new Timer());
-        handler.addObject(new Player(600,800,ID.PLAYER,handler));
+        handler = new Handler(new Timer(), this);
+        handler.addObject(new Player(600,400,ID.PLAYER,handler));
         hud = new HUD(handler);
-        this.addKeyListener(new KeyInput(this.handler));
+        this.addKeyListener(new KeyInput(this.handler,this));
         this.addMouseListener(new MouseInput(this.handler));
         this.addMouseMotionListener(new MouseInput(this.handler));
         this.addMouseWheelListener(new MouseInput(this.handler));
-        handler.addObject(new Block(500,500,ID.BLOCK,handler,100,100,Color.BLUE));
         handler.startGame();
+    }
+
+
+    public void pause(){
+        
     }
 
     public static void main(String[] args){
