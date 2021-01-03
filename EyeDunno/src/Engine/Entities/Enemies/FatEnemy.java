@@ -1,11 +1,10 @@
-package GameObjects.Entities.Enemies;
+package Engine.Entities.Enemies;
 
 import Codes.Game;
-import Codes.Handler;
-import GameObjects.Entities.Enemies.Enemy;
-import GameObjects.Entities.GunPickup;
-import GameObjects.Entities.ID;
-import GameObjects.Entities.Player;
+import Engine.Handler;
+import Engine.Entities.GunPickup;
+import Engine.Entities.ID;
+import Engine.Entities.Player;
 
 import java.awt.*;
 import java.util.Random;
@@ -14,7 +13,7 @@ public class FatEnemy extends Enemy {
 
     public FatEnemy(int x, int y, ID id, Handler handler) {
         super(x, y, id, handler);
-        maxHealth = 600;
+        maxHealth = 450;
         size = 80;
         speed = 1;
         health = maxHealth;

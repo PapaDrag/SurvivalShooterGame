@@ -1,44 +1,21 @@
-package GameObjects.Entities.Shots;
+package Engine.Entities.Shots;
 
-import Codes.Handler;
-import GameObjects.Entities.Enemies.Enemy;
-import GameObjects.Entities.Enemies.RegularEnemy;
-import GameObjects.Entities.GameObject;
-import GameObjects.Entities.ID;
+import Engine.Entities.Enemies.Enemy;
+import Engine.Handler;
+import Engine.Entities.GameObject;
+import Engine.Entities.ID;
 
-import java.awt.*;
+public abstract class Shot extends GameObject {
 
-public class BuckShot extends Shot {
+    public static int velocity;
+    public int size;
+    public int damage;
 
-    public BuckShot(int x, int y, ID id, Handler handler) {
+    public Shot(int x, int y, ID id, Handler handler) {
         super(x, y, id, handler);
-        velocity = 15;
-        size = 7;
-        damage = 6;
     }
 
-    @Override
-    public void tick() {
-        x += velX;
-        y += velY;
-        Collision();
-
-    }
-
-    @Override
-    public void render(Graphics g) {
-        g.setColor(Color.BLUE.darker());
-        g.fillRect((int)x,(int)y, size, size);
-
-    }
-
-    @Override
-    public Rectangle getBounds() {
-        return new Rectangle((int)x,(int)y, size, size);
-    }
-
-    @Override
-    public void Collision() {
+    public void Collision(){
         try {
             for (GameObject object : handler.objects) {
                 if (object.getID() == ID.ENEMY) {
@@ -60,5 +37,6 @@ public class BuckShot extends Shot {
             System.out.println("Collision Exception Detected");
         }
     }
+
 }
 

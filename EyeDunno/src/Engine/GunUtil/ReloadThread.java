@@ -1,6 +1,4 @@
-package GameObjects.GunUtil;
-
-import Codes.Timer;
+package Engine.GunUtil;
 
 public class ReloadThread extends Thread {
 

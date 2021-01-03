@@ -1,11 +1,9 @@
-package GameObjects.Entities;
+package Engine.Entities;
 
 import Codes.Game;
-import Codes.Handler;
-import GameObjects.GunUtil.Gun;
-import GameObjects.GunUtil.Pistol;
-import GameObjects.GunUtil.Shotgun;
-import GameObjects.GunUtil.SubMachineGun;
+import Engine.Handler;
+import Engine.GunUtil.Gun;
+import Engine.GunUtil.Pistol;
 
 import java.awt.*;
 import java.util.LinkedList;
@@ -16,7 +14,7 @@ public class Player extends GameObject {
     public static final int PLAYER_VELOCITY = 6;
     public static final int PLAYER_SIZE = 20;
     private Gun currentGun;
-    private LinkedList<Gun> guns = new LinkedList<Gun>();
+    private LinkedList<Gun> guns = new LinkedList<>();
     private int oldX;
     private int oldY;
     private int score;
@@ -24,7 +22,7 @@ public class Player extends GameObject {
 
     public Player(int x, int y, ID id, Handler handler) {
         super(x, y, id, handler);
-        health = 100;
+        health = 200;
         guns.add(new Pistol(handler,this));
         currentGun = guns.getFirst();
         score = 0;
@@ -162,6 +160,5 @@ public class Player extends GameObject {
     public double getPercentHealth(){
         return (double)health/maxHealth;
     }
-
 
 }

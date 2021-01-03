@@ -1,6 +1,7 @@
-package Codes;
+package Engine;
 
-import GameObjects.Entities.Player;
+import Engine.Entities.Player;
+import Engine.Handler;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

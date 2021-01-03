@@ -1,9 +1,8 @@
-package GameObjects.Entities.Enemies;
+package Engine.Entities.Enemies;
 
-import Codes.Handler;
-import GameObjects.Entities.Enemies.Enemy;
-import GameObjects.Entities.ID;
-import GameObjects.Entities.Player;
+import Engine.Handler;
+import Engine.Entities.ID;
+import Engine.Entities.Player;
 
 import java.awt.*;
 

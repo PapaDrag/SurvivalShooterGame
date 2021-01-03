@@ -1,10 +1,10 @@
-package GameObjects.GunUtil;
+package Engine.GunUtil;
 
-import Codes.Handler;
-import GameObjects.Entities.Shots.HandGunRound;
-import GameObjects.Entities.ID;
-import GameObjects.Entities.Player;
-import GameObjects.Entities.Shots.Shot;
+import Engine.Handler;
+import Engine.Entities.Shots.HandGunRound;
+import Engine.Entities.ID;
+import Engine.Entities.Player;
+import Engine.Entities.Shots.Shot;
 
 public class SubMachineGun extends Gun implements Runnable {
 

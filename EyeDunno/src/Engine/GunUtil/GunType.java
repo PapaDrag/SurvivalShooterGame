@@ -1,4 +1,4 @@
-package GameObjects.GunUtil;
+package Engine.GunUtil;
 
 public enum GunType {
     PISTOL,

@@ -1,4 +1,4 @@
-package GameObjects.Entities;
+package Engine.Entities;
 
 public enum ID {
     PLAYER,

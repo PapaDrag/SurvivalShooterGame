@@ -1,12 +1,12 @@
-package GameObjects.GunUtil;
+package Engine.GunUtil;
 
-import Codes.Handler;
-import GameObjects.Entities.Player;
+import Engine.Handler;
+import Engine.Entities.Player;
 import java.util.Random;
 
 public abstract class Gun {
 
-    public static final int reserveMultiplier = 6;
+    public static final int reserveMultiplier = 4;
 
     protected Random random;
     protected int ammoInMag;

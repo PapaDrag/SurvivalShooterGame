@@ -1,12 +1,9 @@
-package GameObjects.Entities.Enemies;
+package Engine.Entities.Enemies;
 
-import Codes.Handler;
-import GameObjects.Entities.Block;
-import GameObjects.Entities.GameObject;
-import GameObjects.Entities.ID;
-import GameObjects.Entities.Player;
-
-import java.util.Collection;
+import Engine.Handler;
+import Engine.Entities.GameObject;
+import Engine.Entities.ID;
+import Engine.Entities.Player;
 
 public abstract class Enemy extends GameObject {
 

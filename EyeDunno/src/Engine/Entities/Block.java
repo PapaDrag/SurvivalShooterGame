@@ -1,6 +1,6 @@
-package GameObjects.Entities;
+package Engine.Entities;
 
-import Codes.Handler;
+import Engine.Handler;
 
 import java.awt.*;
 

@@ -1,8 +1,8 @@
-package Codes;
+package Engine;
 
-import GameObjects.GunUtil.Gun;
-import GameObjects.GunUtil.GunType;
-import GameObjects.Entities.Player;
+import Codes.Game;
+import Engine.Entities.Player;
+import Engine.Handler;
 
 import java.awt.*;
 
@@ -62,7 +62,7 @@ public class HUD {
         if (ammoInReserve < player.getCurrentGun().getMagazineSize())
             g.setColor(Color.RED);
         g.setFont(new Font("font", Font.BOLD,60));
-        g.drawString( "/" + Integer.toString(ammoInReserve),Game.WIDTH - 132,Game.HEIGHT - 55);
+        g.drawString( "/" + Integer.toString(ammoInReserve), Game.WIDTH - 132,Game.HEIGHT - 55);
         for (int i = 1; i <= ammoInMag; i++){
             g.setColor(Color.BLACK);
             if (ammoInMag < player.getCurrentGun().getMagazineSize()/3)
@@ -90,7 +90,7 @@ public class HUD {
         g.setColor(Color.BLACK);
         g.setFont(new Font("font", Font.BOLD,25));
         String gunStr = player.getCurrentGun().toString();
-        g.drawString(gunStr,Game.WIDTH - 170,Game.HEIGHT - 110);
+        g.drawString(gunStr,Game.WIDTH - 210,Game.HEIGHT - 110);
     }
 
     public void drawScore(Graphics g){

@@ -1,10 +1,10 @@
-package GameObjects.GunUtil;
+package Engine.GunUtil;
 
-import Codes.Handler;
-import GameObjects.Entities.ID;
-import GameObjects.Entities.Player;
-import GameObjects.Entities.Shots.Shot;
-import GameObjects.Entities.Shots.HandGunRound;
+import Engine.Handler;
+import Engine.Entities.ID;
+import Engine.Entities.Player;
+import Engine.Entities.Shots.Shot;
+import Engine.Entities.Shots.HandGunRound;
 
 public class Pistol extends Gun {
 
@@ -14,7 +14,7 @@ public class Pistol extends Gun {
         magazineSize = 15;
         gunType = GunType.PISTOL;
         ammoInMag = magazineSize;
-        ammoInReserve = magazineSize * 10;
+        ammoInReserve = magazineSize * 6;
         reloadTime = 2;
         accuracy = 30;
     }

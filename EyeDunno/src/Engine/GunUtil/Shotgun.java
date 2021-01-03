@@ -1,10 +1,10 @@
-package GameObjects.GunUtil;
+package Engine.GunUtil;
 
-import Codes.Handler;
-import GameObjects.Entities.*;
-import GameObjects.Entities.Shots.BuckShot;
-import GameObjects.Entities.Shots.HandGunRound;
-import GameObjects.Entities.Shots.Shot;
+import Engine.Handler;
+import Engine.Entities.*;
+import Engine.Entities.Shots.BuckShot;
+import Engine.Entities.Shots.HandGunRound;
+import Engine.Entities.Shots.Shot;
 
 public class Shotgun extends Gun {
 

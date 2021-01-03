@@ -1,15 +1,16 @@
 package Codes;
 
-import GameObjects.Entities.Enemies.*;
-import GameObjects.Entities.GameObject;
-import GameObjects.Entities.GunPickup;
-import GameObjects.Entities.ID;
+import Engine.Entities.Enemies.*;
+import Engine.Entities.GameObject;
+import Engine.Entities.GunPickup;
+import Engine.Entities.ID;
+import Engine.Handler;
 
 import java.util.Random;
 
 public class WaveManager implements Runnable {
 
-    public  Handler handler;
+    public Handler handler;
     private int currentWave;
     private Thread thread;
     private Random random;
@@ -37,7 +38,7 @@ public class WaveManager implements Runnable {
         for (int i = 0; i < 7; i++) {
             int[] cords = getRandomSpawn();
             handler.addObject(new RegularEnemy(cords[0], cords[1], ID.ENEMY, handler));
-            wait(.2);
+            wait(1.1);
         }
         waitForWaveCompletion();
     }
@@ -46,12 +47,12 @@ public class WaveManager implements Runnable {
         for (int i = 0; i < 4; i++) {
             int[] cords = getRandomSpawn();
             handler.addObject(new RegularEnemy(cords[0], cords[1], ID.ENEMY, handler));
-            wait(.2);
+            wait(1);
         }
         for (int i = 0; i < 4; i++) {
             int[] cords = getRandomSpawn();
             addRandomEnemy();
-            wait(1);
+            wait(1.4);
         }
         waitForWaveCompletion();
     }
@@ -60,12 +61,12 @@ public class WaveManager implements Runnable {
         for (int i = 0; i < 6; i++) {
             int[] cords = getRandomSpawn();
             handler.addObject(new RegularEnemy(cords[0], cords[1], ID.ENEMY, handler));
-            wait(.1);
+            wait(.8);
         }
         for (int i = 0; i < 8; i++) {
             int[] cords = getRandomSpawn();
             addRandomEnemy();
-            wait(.7);
+            wait(1.5);
         }
         waitForWaveCompletion();
     }
@@ -74,9 +75,21 @@ public class WaveManager implements Runnable {
         for (int i = 0; i <15 ; i++) {
             int[] cords = getRandomSpawn();
             addRandomEnemy();
-            wait(1);
+            wait(1.5);
         }
         waitForWaveCompletion();
+    }
+
+    public void startWaveX(){
+        while (true){
+            int enemies = currentWave*4;
+            for (int i = 0; i<=enemies; i++){
+                addRandomEnemy();
+                wait(1);
+            }
+            waitForWaveCompletion();
+            currentWave++;
+        }
     }
 
 
@@ -93,6 +106,7 @@ public class WaveManager implements Runnable {
         startWave4();
         currentWave++;
         startWave5();
+        startWaveX();
 
 
 
@@ -111,7 +125,7 @@ public class WaveManager implements Runnable {
             wait(1);
         }
         addDrop();
-        wait(5);
+        wait(4);
     }
 
     public void wait(int seconds){

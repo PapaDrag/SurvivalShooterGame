@@ -1,7 +1,7 @@
-package GameObjects.Entities;
+package Engine.Entities;
 
-import Codes.Handler;
-import GameObjects.GunUtil.*;
+import Engine.Handler;
+import Engine.GunUtil.*;
 
 import java.awt.*;
 import java.util.Random;
