@@ -1,6 +1,7 @@
 package Engine.Entities;
 
 import Codes.Game;
+import Engine.GunUtil.SubMachineGun;
 import Engine.Handler;
 import Engine.GunUtil.Gun;
 import Engine.GunUtil.Pistol;
@@ -22,8 +23,8 @@ public class Player extends GameObject {
 
     public Player(int x, int y, ID id, Handler handler) {
         super(x, y, id, handler);
-        health = 200;
-        guns.add(new Pistol(handler,this));
+        health = 100;
+        guns.add(new SubMachineGun(handler,this));
         currentGun = guns.getFirst();
         score = 0;
         maxHealth = 100;

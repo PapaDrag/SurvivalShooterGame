@@ -13,7 +13,7 @@ public class BuckShot extends Shot {
         super(x, y, id, handler);
         velocity = 15;
         size = 7;
-        damage = 6;
+        damage = 9;
     }
 
     @Override

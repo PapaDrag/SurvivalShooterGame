@@ -12,7 +12,7 @@ public class Shotgun extends Gun {
 
     public Shotgun(Handler handler, Player player) {
         super(handler, player);
-        magazineSize = 5;
+        magazineSize = 7;
         gunType = GunType.SHOTGUN;
         ammoInMag = magazineSize;
         ammoInReserve = magazineSize * reserveMultiplier;

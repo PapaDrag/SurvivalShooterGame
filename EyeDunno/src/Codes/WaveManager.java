@@ -112,11 +112,14 @@ public class WaveManager implements Runnable {
 
     }
 
-    public boolean hasEnemies(){
-        for (GameObject object: handler.objects){
-            if (object.getID() == ID.ENEMY)
-                return true;
-        }
+    public boolean hasEnemies() {
+        try {
+            for (GameObject object : handler.objects) {
+                if (object.getID() == ID.ENEMY)
+                    return true;
+            }
+
+        }catch (Exception ignored){}
         return false;
     }
 
