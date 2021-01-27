@@ -29,7 +29,7 @@ public class HUD {
 
     public void render(Graphics g){
         drawHealth(g);
-        //drawAmmo(g);
+        drawAmmo(g);
         drawWave(g);
         drawReloading(g);
         drawScore(g);

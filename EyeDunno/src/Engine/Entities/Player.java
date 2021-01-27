@@ -24,7 +24,7 @@ public class Player extends GameObject {
     public Player(int x, int y, ID id, Handler handler) {
         super(x, y, id, handler);
         health = 100;
-        guns.add(new SubMachineGun(handler,this));
+        guns.add(new Pistol(handler,this));
         currentGun = guns.getFirst();
         score = 0;
         maxHealth = 100;

@@ -13,14 +13,14 @@ public class SubMachineGun extends Gun implements Runnable {
 
     public SubMachineGun(Handler handler, Player player) {
         super(handler, player);
-        magazineSize = 35000000;
+        magazineSize = 35;
         gunType = GunType.SUBMACHINEGUN;
         ammoInMag = magazineSize;
         ammoInReserve = magazineSize * reserveMultiplier;
         reloadTime = 3;
         accuracy = 60;
         isTriggerDown = false;
-        rateOfFire = 3;
+        rateOfFire = 50;
 
     }
 
